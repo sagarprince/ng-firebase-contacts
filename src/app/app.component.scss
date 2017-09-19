@@ -1,0 +1,26 @@
+.wrap {
+    background-color: #ebeef2;
+    height: 100vh;
+    padding-bottom: 30px;
+    overflow-y: auto; 
+
+    .alphabets-filter--row {
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        button {
+            margin-left: 8px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+    }   
+
+    .add-contact--btn {
+        margin-bottom: 25px;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 6px 15px 8px;
+    }
+
+}
+

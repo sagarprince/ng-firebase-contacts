@@ -1,0 +1,29 @@
+<div id="page-wrapper"> 
+
+    <div class="wrap">
+      <div class="container">
+        <div class="row alphabets-filter--row">      
+          <div class="col-xs-12 text-center">
+            <button class="btn btn-sm btn-default" [class.btn-primary]="allActive" (click)="filterByAlphabets()">ALL</button>
+            <button class="btn btn-sm btn-default" [class.btn-primary]="alphabet.active" *ngFor="let alphabet of alphabets" (click)="filterByAlphabets(alphabet.char)">{{alphabet.char}}</button>
+          </div>
+        </div>
+        <div class="row">      
+          <div class="col-sm-12 text-right">
+            <button class="btn btn-sm btn-primary add-contact--btn" (click)="openAddContact()">Add New Contact</button>
+          </div>
+
+          <app-contact *ngFor="let contact of contacts" [contact]="contact" (editContactEvent)="openEditContact($event)"></app-contact>
+          
+          <div class="col-sm-12" *ngIf="allContacts.length == 0"><h3 class="text-center">No contacts found</h3></div>         
+        </div>        
+      </div>
+    </div>
+
+    <div addContact></div>
+
+    <div editContact></div>
+
+    <div loader></div>
+</div>
+

@@ -1,0 +1,71 @@
+<div id="modal-add-contact" class="modal fade in" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog" [@slideRightAnimation]>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="fa fa-window-close"></i>
+        </button>
+        <h3 class="modal-title">Add Contact</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal form-bordered" (ngSubmit)="addContact(addContactForm)" novalidate [formGroup]="addContactForm">
+          <div class="form-group">
+            <label class="col-xs-12 text-center">Profile Image</label>
+            <div class="col-xs-12 text-center">
+              <div class="profile-image img-circle img-thumbnail img-thumbnail-avatar" [style.background-image]="'url(' + profileImage + ')' | safe">
+                <input type="file" #profileImageEl class="file-upload" (change)="uploadProfileImage($event)" />
+                <div class="select-profile--image" (click)="openProfileImageUpload()">
+                  <i class="fa fa-camera"></i>
+                </div>
+              </div>
+              <input type="hidden" name="add-contact-profile-image" formControlName="profileImage" />
+              <div class="progress" *ngIf="uploadStart">
+                <div class="progress-bar progress-bar-striped progress-bar-success" role="progressbar" [style.width.%]="uploadProgress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" [class.has-error]="!addContactForm.controls.fullName.valid && addContactForm.dirty">
+            <label class="col-xs-3 control-label" for="add-contact-name">Name</label>
+            <div class="col-xs-9">
+              <input type="text" id="add-contact-name" name="add-contact-name" class="form-control" formControlName="fullName" placeholder="Enter Full Name..">
+              <div class="help-block slideInUp animated" *ngIf="!addContactForm.controls.fullName.valid && addContactForm.dirty">Please enter a full name.</div>
+            </div>
+          </div>
+          <div class="form-group" [class.has-error]="!addContactForm.controls.email.valid && addContactForm.dirty">
+            <label class="col-xs-3 control-label" for="add-contact-email">Email</label>
+            <div class="col-xs-9">
+              <input type="email" id="add-contact-email" name="add-contact-email" class="form-control" formControlName="email" placeholder="Enter Email..">
+              <div class="help-block slideInUp animated" *ngIf="!addContactForm.controls.email.valid && addContactForm.dirty">Please enter a valid email address.</div>
+            </div>
+          </div>          
+          <div class="form-group" [class.has-error]="!addContactForm.controls.mobileNumber.valid && addContactForm.dirty">
+            <label class="col-xs-3 control-label" for="add-contact-mobile">Mobile</label>
+            <div class="col-xs-9">
+              <input type="text" id="add-contact-mobile" name="add-contact-mobile" class="form-control" formControlName="mobileNumber" placeholder="Enter Mobile Number..">
+              <div class="help-block slideInUp animated" *ngIf="!addContactForm.controls.mobileNumber.valid && addContactForm.dirty">Please enter a mobile number.</div>
+            </div>
+          </div>
+          <div class="form-group" [class.has-error]="!addContactForm.controls.jobTitle.valid && addContactForm.dirty">
+            <label class="col-xs-3 control-label" for="add-contact-job-title">Job Title</label>
+            <div class="col-xs-9">
+              <input type="text" id="add-contact-job-title" name="add-contact-job-title" class="form-control" formControlName="jobTitle" placeholder="Enter Job Title..">
+              <div class="help-block slideInUp animated" *ngIf="!addContactForm.controls.jobTitle.valid && addContactForm.dirty">Please enter a job title.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-3 control-label" for="add-contact-address">Address</label>
+            <div class="col-xs-9">
+              <input type="text" id="add-contact-address" name="add-contact-address" class="form-control" formControlName="address" placeholder="Enter Address..">
+            </div>
+          </div>
+          
+          <div class="form-group form-actions">
+            <div class="col-xs-12 text-right">
+              <button type="submit" class="btn btn-effect-ripple btn-success">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

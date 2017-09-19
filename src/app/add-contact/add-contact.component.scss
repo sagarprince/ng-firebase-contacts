@@ -1,0 +1,47 @@
+.modal-header .close {
+    font-size: 30px;
+    opacity: 1;
+    margin: 0px;
+    color: #bf1f1f;
+    outline: none;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #DDDDDD;
+    border-radius: 100%;
+    display: inline-block;
+    background-size: cover;    
+    position: relative;
+
+    .file-upload {
+        display: none;
+    }
+
+    .select-profile--image {
+        font-size: 15px;
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        text-align: center;
+        background-color: #084234;
+        color: #FFFFFF;
+        padding: 6px 0px 0px;
+        position: absolute;
+        top: 0px;
+        left: auto;
+        right: -14px;
+        cursor: pointer;
+    }
+}
+
+.progress {
+    background-color: #c5c8cc;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+

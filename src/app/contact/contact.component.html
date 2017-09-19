@@ -1,0 +1,9 @@
+<div class="col-sm-6 col-md-4 col-lg-4" (click)="editContact()" [@scaleAnimation]>
+  <a href="javascript:void(0)" class="widget">
+    <div class="widget-content text-right clearfix">
+      <div class="profile-image pull-left img-circle img-thumbnail img-thumbnail-avatar" [style.background-image]="'url(' + contact.profile_image + ')' | safe"></div>
+      <h3 class="widget-heading h4"><strong>{{contact.full_name}}</strong></h3>
+      <span class="text-muted">{{contact.job_title}}</span>
+    </div>
+  </a>
+</div>

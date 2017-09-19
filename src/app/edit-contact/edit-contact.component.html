@@ -1,0 +1,72 @@
+<div id="modal-edit-contact" class="modal fade in" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog" [@slideRightAnimation]>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="fa fa-window-close"></i>
+        </button>
+        <h3 class="modal-title">Edit Contact</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal form-bordered" (ngSubmit)="saveContact(editContactForm)" novalidate [formGroup]="editContactForm">
+          <div class="form-group">
+            <label class="col-xs-12 text-center">Profile Image</label>
+            <div class="col-xs-12 text-center">
+              <div class="profile-image img-circle img-thumbnail img-thumbnail-avatar" [style.background-image]="'url(' + profileImage + ')' | safe">
+                <input type="file" #profileImageEl class="file-upload" (change)="uploadProfileImage($event)" />
+                <div class="select-profile--image" (click)="openProfileImageUpload()">
+                  <i class="fa fa-camera"></i>
+                </div>
+              </div>
+              <input type="hidden" name="edit-contact-profile-image" formControlName="profileImage" />              
+              <div class="progress" *ngIf="uploadStart">
+                <div class="progress-bar progress-bar-striped progress-bar-success" role="progressbar" [style.width.%]="uploadProgress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" [class.has-error]="!editContactForm.controls.fullName.valid && editContactForm.dirty">
+            <label class="col-xs-3 control-label" for="edit-contact-name">Name</label>
+            <div class="col-xs-9">
+              <input type="text" id="edit-contact-name" name="edit-contact-name" class="form-control" formControlName="fullName" placeholder="Enter Full Name..">
+              <div class="help-block slideInUp animated" *ngIf="!editContactForm.controls.fullName.valid && editContactForm.dirty">Please enter a full name.</div>
+            </div>
+          </div>
+          <div class="form-group" [class.has-error]="!editContactForm.controls.email.valid && editContactForm.dirty">
+            <label class="col-xs-3 control-label" for="edit-contact-email">Email</label>
+            <div class="col-xs-9">
+              <input type="email" id="edit-contact-email" name="edit-contact-email" class="form-control" formControlName="email" placeholder="Enter Email..">
+              <div class="help-block slideInUp animated" *ngIf="!editContactForm.controls.email.valid && editContactForm.dirty">Please enter a valid email address.</div>
+            </div>
+          </div>          
+          <div class="form-group" [class.has-error]="!editContactForm.controls.mobileNumber.valid && editContactForm.dirty">
+            <label class="col-xs-3 control-label" for="edit-contact-mobile">Mobile</label>
+            <div class="col-xs-9">
+              <input type="text" id="edit-contact-mobile" name="edit-contact-mobile" class="form-control" formControlName="mobileNumber" placeholder="Enter Mobile Number..">
+              <div class="help-block slideInUp animated" *ngIf="!editContactForm.controls.mobileNumber.valid && editContactForm.dirty">Please enter a mobile number.</div>
+            </div>
+          </div>
+          <div class="form-group" [class.has-error]="!editContactForm.controls.jobTitle.valid && editContactForm.dirty">
+            <label class="col-xs-3 control-label" for="edit-contact-job-title">Job Title</label>
+            <div class="col-xs-9">
+              <input type="text" id="edit-contact-job-title" name="edit-contact-job-title" class="form-control" formControlName="jobTitle" placeholder="Enter Job Title..">
+              <div class="help-block slideInUp animated" *ngIf="!editContactForm.controls.jobTitle.valid && editContactForm.dirty">Please enter a job title.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-3 control-label" for="edit-contact-address">Address</label>
+            <div class="col-xs-9">
+              <input type="text" id="edit-contact-address" name="edit-contact-address" class="form-control" formControlName="address" placeholder="Enter Address..">
+            </div>
+          </div>
+          
+          <div class="form-group form-actions">
+            <div class="col-xs-12 text-right">
+              <button type="submit" class="btn btn-effect-ripple btn-success">Save</button>
+              <button type="button" class="btn btn-effect-ripple btn-danger" (click)="deleteContact()">Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
